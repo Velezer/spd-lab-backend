@@ -53,6 +53,7 @@ const start = async () => {
 
         app.use("/api/auth", require("./route/auth.route"));
         app.use("/api/products", require("./route/product.route"));
+        app.use("/api/orders", require("./route/order.route"));
         app.use(errorHandler);
 
         const PORT = process.env.PORT || 3000;
