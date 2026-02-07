@@ -7,6 +7,11 @@ const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
+
+const rawOrigins = process.env.CLIENT_ORIGIN || "";
+const allowedOrigins = rawOrigins.split(",").map(o => o.trim()).filter(Boolean);
+const allowAll = allowedOrigins.includes("*");
+
 const start = async () => {
     try {
         await connectDB(); // <-- block startup
@@ -17,9 +22,15 @@ const start = async () => {
 
         app.use(cors({
             origin: function (origin, callback) {
-                // allow requests with no origin (Postman, curl)
+                // Allow server-to-server, Postman, curl, mobile apps
                 if (!origin) return callback(null, true);
 
+                // If wildcard is set → allow everything
+                if (allowAll) {
+                    return callback(null, true);
+                }
+
+                // Normal whitelist check
                 if (allowedOrigins.includes(origin)) {
                     return callback(null, true);
                 }
