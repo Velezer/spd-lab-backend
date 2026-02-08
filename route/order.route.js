@@ -63,7 +63,8 @@ router.post("/", authMiddleware, validateOrder, async (req, res, next) => {
       paymentMethod
     });
 
-    await order.populate("items.product user");
+    await order.populate("items.product");
+    await order.populate("user", "-password");
 
     res.status(201).json({
       message: "Order created successfully",
