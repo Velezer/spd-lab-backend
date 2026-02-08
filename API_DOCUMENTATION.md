@@ -2,6 +2,12 @@
 
 **Base URL**: https://spd-lab-backend-db797613f87b.herokuapp.com
 
+
+## Postman Collection
+Postman Collection dapat digunakan untuk hit API tanpa perlu import satu-satu. Silakan import pada link berikut
+[Click!](./SPD_Marketplace.postman_collection.json)
+
+
 ## 📚 API Endpoints Overview
 
 ### Authentication
