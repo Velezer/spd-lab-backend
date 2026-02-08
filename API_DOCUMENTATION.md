@@ -1,5 +1,7 @@
 # SPD Online Marketplace - Backend API Documentation
 
+**Base URL**: https://spd-lab-backend-db797613f87b.herokuapp.com
+
 ## 📚 API Endpoints Overview
 
 ### Authentication
@@ -23,7 +25,8 @@
 
 ## Base URL
 ```
-http://localhost:3000/api
+http://localhost:3000
+https://spd-lab-backend-db797613f87b.herokuapp.com
 ```
 
 ## Authentication
@@ -37,7 +40,7 @@ Authorization: Bearer <token>
 ## Authentication Endpoints
 
 ### 1. Register User
-- **Endpoint**: `POST /auth/register`
+- **Endpoint**: `POST /api/auth/register`
 - **Description**: Membuat akun user baru
 - **Body**:
 ```json
@@ -61,7 +64,7 @@ Authorization: Bearer <token>
 ```
 
 ### 2. Login
-- **Endpoint**: `POST /auth/login`
+- **Endpoint**: `POST /api/auth/login`
 - **Description**: Login ke akun user
 - **Body**:
 ```json
@@ -84,7 +87,7 @@ Authorization: Bearer <token>
 ```
 
 ### 3. Get Current User
-- **Endpoint**: `GET /auth/me`
+- **Endpoint**: `GET /api/auth/me`
 - **Protected**: Yes (requires token)
 - **Response** (200):
 ```json
@@ -102,7 +105,7 @@ Authorization: Bearer <token>
 ## Product Endpoints
 
 ### 1. Get All Products
-- **Endpoint**: `GET /products`
+- **Endpoint**: `GET /api/products`
 - **Description**: Mengambil semua produk dengan sorting terbaru
 - **Query Parameters**: (optional)
   - `limit`: jumlah produk per halaman
@@ -124,7 +127,7 @@ Authorization: Bearer <token>
 ```
 
 ### 2. Get Product by ID
-- **Endpoint**: `GET /products/:id`
+- **Endpoint**: `GET /api/products/:id`
 - **Description**: Mengambil detail produk spesifik
 - **Response** (200):
 ```json
@@ -141,7 +144,7 @@ Authorization: Bearer <token>
 ```
 
 ### 3. Create Product
-- **Endpoint**: `POST /products`
+- **Endpoint**: `POST /api/products`
 - **Protected**: Yes (requires token)
 - **Description**: Membuat produk baru
 - **Body**:
@@ -169,14 +172,14 @@ Authorization: Bearer <token>
 ```
 
 ### 4. Update Product
-- **Endpoint**: `PUT /products/:id`
+- **Endpoint**: `PUT /api/products/:id`
 - **Protected**: Yes (requires token)
 - **Description**: Update informasi produk
 - **Body**: (same as create, all fields required)
 - **Response** (200): Updated product object
 
 ### 5. Delete Product
-- **Endpoint**: `DELETE /products/:id`
+- **Endpoint**: `DELETE /api/products/:id`
 - **Protected**: Yes (requires token)
 - **Description**: Menghapus produk
 - **Response** (200):
@@ -191,7 +194,7 @@ Authorization: Bearer <token>
 ## Order Endpoints (Checkout)
 
 ### 1. Create Order (Checkout)
-- **Endpoint**: `POST /orders`
+- **Endpoint**: `POST /api/orders`
 - **Protected**: Yes (requires token)
 - **Description**: Membuat order baru (checkout)
 - **Body**:
@@ -251,19 +254,19 @@ Authorization: Bearer <token>
 ```
 
 ### 2. Get All User Orders
-- **Endpoint**: `GET /orders`
+- **Endpoint**: `GET /api/orders`
 - **Protected**: Yes (requires token)
 - **Description**: Mengambil semua order dari user yang login
 - **Response** (200): Array of order objects
 
 ### 3. Get Single Order
-- **Endpoint**: `GET /orders/:id`
+- **Endpoint**: `GET /api/orders/:id`
 - **Protected**: Yes (requires token)
 - **Description**: Mengambil detail order spesifik
 - **Response** (200): Order object dengan detail lengkap
 
 ### 4. Update Order Status
-- **Endpoint**: `PUT /orders/:id/status`
+- **Endpoint**: `PUT /api/orders/:id/status`
 - **Protected**: Yes (requires token)
 - **Description**: Update status order
 - **Body**:
@@ -325,8 +328,8 @@ Authorization: Bearer <token>
 
 ## Testing dengan Postman
 
-1. **Register**: POST ke `/auth/register` dengan nama, email, password
-2. **Login**: POST ke `/auth/login` dengan email, password (dapatkan token)
+1. **Register**: POST ke `/api/auth/register` dengan nama, email, password
+2. **Login**: POST ke `/api/auth/login` dengan email, password (dapatkan token)
 3. **Copy token** ke Postman header
 4. **Set Authorization**: Type = Bearer Token, paste token
 5. **Test semua endpoint** dengan token tersebut

@@ -1,5 +1,6 @@
 # SPD Online Marketplace - Backend API
-**Technology Stack**: Node.js, Express.js, MongoDB, JWT Authentication  
+**Technology Stack**: Node.js, Express.js, MongoDB, JWT Authentication, Heroku
+**Base URL**: https://spd-lab-backend-db797613f87b.herokuapp.com
 
 ## 🔧 Setup & Installation
 
@@ -44,6 +45,7 @@ MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/spd-marketp
 
 # JWT Secret (gunakan string yang kompleks dan random)
 JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
+JWT_EXPIRES_IN=7d
 
 # Server Port
 PORT=3000
@@ -52,7 +54,12 @@ PORT=3000
 CLIENT_ORIGIN=http://localhost:3000,http://localhost:3001,http://localhost:5173,http://localhost:19000,*
 ```
 
-### 4. Run Server
+### 4.0 Seeder Product (Optional)
+```bash
+npm run seed
+```
+
+### 4.1 Run Server
 
 **Development Mode**:
 ```bash
